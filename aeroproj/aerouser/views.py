@@ -4,10 +4,10 @@ from django.template import loader
 from .models import userdata
 
 def index(request):
-    myusers = userdata.objects.all().values()
+    #template = userdata.objects.all().values()
     template = loader.get_template('form.html')
     context = {
-    'udatas': myusers,
+    'udatas': template,
     }
     return HttpResponse(template.render(context, request))
 
