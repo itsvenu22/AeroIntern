@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import userdata
+from django.contrib.auth.hashers import make_password
 
 def login(request):
     #template = userdata.objects.all().values()
@@ -22,10 +23,11 @@ def signup(request):
         field2_data = request.POST.get('email')   
         field3_data = request.POST.get('password')
         # Create an instance of YourModel
-        new_entry = userdata(username=field1_data, email=field2_data,password=field3_data)
+        
+        hashed_password=make_password(field3_data)
+        new_entry = userdata(username=field1_data, email=field2_data,password=hashed_password)
 
         # Save the data to the database
-        new_entry.save()
 
         return HttpResponse("success")
     else:
