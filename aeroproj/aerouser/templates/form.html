@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body bgcolor="D2E0FB">
-    <form>
-        <input type="text" id="phoneno"/>
-        <button type="submit">SUBMIT</button>
-        
-
-    </form>
+    <p>Yea, this's a login page</p>
+    <ul>
+        {% for x in udatas %}
+          <li><a href="/details/{{x.id}}" target="_blank">{{x.firstname }} {{x.lastname}}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
