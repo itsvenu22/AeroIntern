@@ -11,6 +11,10 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+def home_view(request):
+    print(request.GET)
+    return render(request, "login.html")
+
 '''
 def details(request,id):
     myuser = userdata.objects.get(id=id)
