@@ -1,10 +1,8 @@
 from django.urls import path
-
 from . import views
 
 urlpatterns = [
     path("login", views.login, name="login"),
     path("signup",views.signup, name="signup" ),
-    
-    #path("details/<int:id>", views.details, name='details'),
+    path("otp",views.otp, name="otp" ),
 ]
