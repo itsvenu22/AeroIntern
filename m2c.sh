@@ -42,8 +42,7 @@ intern_repo() {
     sleep 2
     echo -e "__________________________________________________________________________________________________________"
 
-    echo -e "\e[1;33mCommit message:\e[0m"
-    read commit_message
+
 
     git commit -m "$commit_message"
 
@@ -77,8 +76,7 @@ backup_repo() {
     sleep 2
     echo -e "__________________________________________________________________________________________________________"
 
-    echo -e "\e[1;33mCommit message:\e[0m"
-    read commit_message
+
 
     git commit -m "$commit_message"
 
@@ -100,12 +98,18 @@ while true; do
 
     case "$choice" in
         1)
+			echo -e "\e[1;33mCommit message:\e[0m"
+			read commit_message
             intern_repo
             ;;
         2)
+			echo -e "\e[1;33mCommit message:\e[0m"
+			read commit_message		
             backup_repo
             ;;
         3)
+			echo -e "\e[1;33mCommit message:\e[0m"
+			read commit_message	
             intern_repo
             backup_repo
             ;;
