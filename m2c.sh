@@ -94,7 +94,7 @@ while true; do
     echo -e " >> ${GREEN}${BOLD}3 Both Repo${NORMAL}"
     echo -e " >> ${RED}${BOLD}4 Exit${NORMAL}"
 
-    read -p "${BOLD}Enter your choice (1/2/3):${NORMAL} " choice
+    read -p "${BOLD}0ffS3c-v3nu enter your choice (1/2/3/4):${NORMAL} " choice
 
     case "$choice" in
         1)
