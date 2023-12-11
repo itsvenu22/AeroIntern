@@ -88,6 +88,9 @@ backup_repo() {
 
 
 while true; do
+    echo
+    echo -e "${YELLOW}Script by Venukanthan - https://github.com/itsvenu22${NORMAL}"
+    echo
     echo -e "${BOLD}Which repository do you want to commit to?${NORMAL}"
     echo -e " >> ${GREEN}${BOLD}1 Intern Repo${NORMAL}"
     echo -e " >> ${GREEN}${BOLD}2 Backup Repo${NORMAL}"
