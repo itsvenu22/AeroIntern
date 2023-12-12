@@ -130,6 +130,9 @@ while true; do
             exit 0
             ;;
         *)
+            clear
+            echo
+            echo
             print_message "$RED" "Yooooooooooo :\ "
             ;;
     esac
