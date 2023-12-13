@@ -129,6 +129,7 @@ git_message() {
     echo 
     echo -e "\e[1;33mCommit message02:\e[0m"
     read commit_message02
+    $commit_message = "feat($commit_message01): $commit_message02"
 }
 
 while true; do
