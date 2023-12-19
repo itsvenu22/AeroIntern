@@ -254,3 +254,11 @@ def particularpatient_delete(request,pk):
     data = get_object_or_404(patientdata, pk=pk)
     data.delete()
     return redirect('patients')
+
+def particularpatient_edit(request,pk):
+    data = get_object_or_404(patientdata, pk=pk)
+    context = {
+        "data": data
+    }
+
+    return render(request, "particularpatient_edit.html", {"data": data})
