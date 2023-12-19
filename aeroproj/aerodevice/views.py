@@ -260,5 +260,29 @@ def particularpatient_edit(request,pk):
     context = {
         "data": data
     }
+    if request.method == 'POST':
+        
+        data.deviceid = request.POST.get('deviceid')
+        data.doctorid = request.POST.get('doctorid')
+        data.patientid = request.POST.get('patientid')
+        data.patient_name = request.POST.get('patient_name')
+        data.patient_age = request.POST.get('patient_age')
+        data.patient_gender = request.POST.get('patient_gender')
+        data.height = request.POST.get('height')
+        data.weight = request.POST.get('weight')
+        data.blood = request.POST.get('blood')
+        data.ibw = request.POST.get('ibw')
+        data.itv = request.POST.get('itv')
+        data.bmi = request.POST.get('bmi')
+        data.admitted_date = request.POST.get('admitted_date')
+        data.reason = request.POST.get('reason')
+        data.potential = request.POST.get('potential')
+        data.contact = request.POST.get('contact')
+        data.emergency = request.POST.get('emergency')
 
-    return render(request, "particularpatient_edit.html", {"data": data})
+        data.save()
+
+        return redirect('particularpatient', pk=pk)
+
+    else:
+        return render(request, "particularpatient_edit.html", context)
