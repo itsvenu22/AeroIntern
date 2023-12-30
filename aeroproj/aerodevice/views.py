@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
@@ -13,16 +15,17 @@ from aerouser.views import gen_uid
 import requests, random
 from django.utils import timezone
 
+@csrf_exempt
 def rand_mac():
     hex = [random.choice('0123456789ABCDEF') for _ in range(12)]
     mac = ':'.join([''.join(hex[i:i+2]) for i in range(0, 12, 2)])
     return mac
-
+@csrf_exempt
 def rand_model():
     m = [random.choice('0123456789GHIJKLMNOPQRABCDEFSTUVWXYZ') for _ in range(6)]
     model = ''.join([i for i in m])
     return model
-
+@csrf_exempt
 def alldevices(request):
     email_data = request.session.get('doctor_email')
     sno_data = request.session.get('devicelog')
@@ -56,7 +59,7 @@ def alldevices(request):
     }
 
     return render(request, "alldevices.html", context)
-
+@csrf_exempt
 def particulardevice(request,pk):
     data = get_object_or_404(devicedata, pk=pk)
     context = {
@@ -64,7 +67,7 @@ def particulardevice(request,pk):
     }
     return render(request, "particulardevice.html", context)
 
-
+@csrf_exempt
 def devicereg(request):
 
     #email_data = request.session.get('email')
@@ -111,7 +114,7 @@ def devicereg(request):
         
     else:
         return render(request, "devicereg.html", { 'mac': mac, 'model_no': model_no}) 
-
+@csrf_exempt
 def mylog(request):
     email_data = request.session.get('doctor_email')
     sno_data = request.session.get('devicelog')
@@ -134,7 +137,7 @@ def mylog(request):
     }
     
     return render(request, "mylog.html",context)
-
+@csrf_exempt
 def otherlog(request):
     email_data = request.session.get('doctor_email')
     sno_data = request.session.get('devicelog')
@@ -155,7 +158,7 @@ def otherlog(request):
     }
     return render(request, "otherlog.html",context)
 
-
+@csrf_exempt
 def patientreg(request):
     email_data = request.session.get('doctor_email')
     device_data = request.session.get('devicelog')
@@ -221,7 +224,7 @@ def patientreg(request):
     else:
         return render(request, "patientreg.html", {'email': email_data, 'patient_id':patient_id, 'device_id': device_data}) 
 
-
+@csrf_exempt
 def patients(request):
     email_data = request.session.get('doctor_email')
     usertype = request.session.get('usertype')
@@ -242,19 +245,19 @@ def patients(request):
     }
 
     return render(request, "patients.html", context)
-
+@csrf_exempt
 def particularpatient(request,pk):
     data = get_object_or_404(patientdata, pk=pk)
     context = {
         "data": data
     }
     return render(request, "particularpatient.html", context)
-
+@csrf_exempt
 def particularpatient_delete(request,pk):
     data = get_object_or_404(patientdata, pk=pk)
     data.delete()
     return redirect('patients')
-
+@csrf_exempt
 def particularpatient_edit(request,pk):
     data = get_object_or_404(patientdata, pk=pk)
     context = {

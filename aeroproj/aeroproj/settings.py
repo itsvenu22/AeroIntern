@@ -26,9 +26,9 @@ STATIC_DIR =  Path(BASE_DIR)
 SECRET_KEY = 'django-insecure-3y2@fu&t^mbaycyidql6k#jum%$3b@@c4i_qy+-fc(k$+++*nx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['aerobiosys.venudev.co',]
 
 
 # Application definition

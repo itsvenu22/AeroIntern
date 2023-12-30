@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -10,11 +12,11 @@ import uuid, time, pyotp
 from django.contrib import messages
 from django.utils import timezone
 
-
+@csrf_exempt
 def gen_uid():
     otp = pyotp.TOTP('base32secret3232')
     return otp.now()
-
+@csrf_exempt
 def signup(request):
     error_message = None 
     if request.method == 'POST':
@@ -52,7 +54,7 @@ def signup(request):
     else:
         return render(request, "signup.html", {'error_message': error_message}) 
 
-
+@csrf_exempt
 def otp(request):
     user_email = request.session.get('email')
     user_name = request.session.get('username')
@@ -85,7 +87,7 @@ def otp(request):
     else:
         return render(request, "otp.html", {'error_message': error_message}) 
 
-
+@csrf_exempt
 def login(request):
     #print(timezone.now())
     error_message = None 
@@ -156,7 +158,7 @@ def login(request):
                     return render(request,"landing.html", context,)
     else:
         return render(request, "login.html", {'error_message': error_message})
-
+@csrf_exempt
 def logout(request):
 
     log_user = request.session.get('userlog')
@@ -179,7 +181,7 @@ def logout(request):
         print(temp)
     return redirect('login')
 
-
+@csrf_exempt
 def forgot_otp(request):
     user_email = request.session.get('email')
     user_otp = request.session.get('otp')
@@ -212,7 +214,7 @@ def forgot_otp(request):
     else:
         return render(request, "forgototp.html", {'error_message': error_message}) 
 
-
+@csrf_exempt
 def forgot(request):
     error_message = None 
     if request.method == 'POST':
